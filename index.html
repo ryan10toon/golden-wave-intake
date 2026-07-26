@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Opportunity Intake — Golden Wave</title>
+  <meta name="description" content="Short pre-call intake so your Golden Wave assessment starts useful from minute one." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1210;
+      --bg-elev: #121c18;
+      --bg-card: #16231e;
+      --line: rgba(232, 220, 186, 0.14);
+      --text: #f3efe4;
+      --muted: #a8b3ab;
+      --gold: #d4b56a;
+      --gold-soft: rgba(212, 181, 106, 0.16);
+      --teal: #3d9b84;
+      --teal-deep: #1f6b5a;
+      --danger: #e07a6a;
+      --ok: #6fcf97;
+      --radius: 16px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(61, 155, 132, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(212, 181, 106, 0.12), transparent 50%),
+        var(--bg);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-mark {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background:
+        conic-gradient(from 210deg, var(--teal), var(--gold), var(--teal-deep), var(--teal));
+      box-shadow: 0 0 0 3px rgba(212, 181, 106, 0.15);
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      line-height: 1.15;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lede {
+      color: var(--muted);
+      max-width: 38rem;
+      margin: 0 auto;
+      font-size: 1.02rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%), var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+      padding: 1rem 1.25rem 0;
+    }
+
+    .progress span {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress span::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .progress span.on::after { transform: scaleX(1); }
+    .progress span.partial::after { transform: scaleX(0.45); }
+
+    .step-label {
+      padding: 0.85rem 1.25rem 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    form { padding: 0.5rem 1.25rem 1.25rem; }
+
+    .step { display: none; animation: in 0.28s ease; }
+    .step.active { display: block; }
+
+    @keyframes in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .section-intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0.4rem 0 1.1rem;
+    }
+
+    fieldset {
+      border: 0;
+      margin: 0 0 1.35rem;
+      padding: 0;
+    }
+
+    legend {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+      padding: 0;
+    }
+
+    .field { margin-bottom: 1rem; }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    label .req {
+      color: var(--gold);
+      margin-left: 0.15rem;
+    }
+
+    .hint {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 400;
+      margin-top: 0.25rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--bg-elev);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+    select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 2.2rem; }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(61, 155, 132, 0.7);
+      box-shadow: 0 0 0 3px rgba(61, 155, 132, 0.18);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .choice {
+      position: relative;
+    }
+
+    .choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice span {
+      display: block;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg-elev);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+    }
+
+    .choice input:focus-visible + span {
+      box-shadow: 0 0 0 3px rgba(61, 155, 132, 0.18);
+    }
+
+    .choice input:checked + span {
+      border-color: rgba(212, 181, 106, 0.65);
+      background: var(--gold-soft);
+    }
+
+    .choice:hover span { border-color: rgba(255,255,255,0.22); }
+
+    .checks {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .check {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.7rem 0.85rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg-elev);
+      cursor: pointer;
+    }
+
+    .check:hover { border-color: rgba(255,255,255,0.22); }
+    .check input { margin-top: 0.2rem; accent-color: var(--teal); width: 1rem; height: 1rem; }
+    .check.has-other { align-items: center; }
+
+    .scale {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.4rem;
+    }
+
+    .scale label {
+      margin: 0;
+      text-align: center;
+    }
+
+    .scale span {
+      display: block;
+      padding: 0.75rem 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--bg-elev);
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .scale input { position: absolute; opacity: 0; pointer-events: none; }
+    .scale input:checked + span {
+      border-color: rgba(212, 181, 106, 0.65);
+      background: var(--gold-soft);
+      color: var(--gold);
+    }
+
+    .scale-caption {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 0.4rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    button {
+      font: inherit;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.12s ease, opacity 0.12s ease, background 0.12s ease;
+    }
+
+    button:active { transform: translateY(1px); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+      color: white;
+      box-shadow: 0 10px 24px rgba(31, 107, 90, 0.35);
+      min-width: 9rem;
+    }
+
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    .error {
+      color: var(--danger);
+      font-size: 0.84rem;
+      margin-top: 0.35rem;
+      display: none;
+    }
+
+    .field.invalid input,
+    .field.invalid select,
+    .field.invalid textarea,
+    .field.invalid .choices,
+    .field.invalid .checks {
+      /* keep subtle */
+    }
+
+    .field.invalid > input,
+    .field.invalid > select,
+    .field.invalid > textarea {
+      border-color: rgba(224, 122, 106, 0.7);
+    }
+
+    .field.invalid .error { display: block; }
+
+    .foot {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 1.25rem;
+    }
+
+    .success {
+      display: none;
+      padding: 2.25rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .success.show { display: block; }
+    .success h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 2rem;
+      margin: 0.6rem 0 0.75rem;
+    }
+
+    .success p { color: var(--muted); margin: 0 auto 1.25rem; max-width: 28rem; }
+
+    .check-badge {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 999px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      background: rgba(111, 207, 151, 0.12);
+      color: var(--ok);
+      font-size: 1.4rem;
+      border: 1px solid rgba(111, 207, 151, 0.3);
+    }
+
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .hidden { display: none !important; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.25rem;
+      transform: translateX(-50%) translateY(120%);
+      background: #1c2a24;
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease;
+      z-index: 50;
+      font-size: 0.9rem;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Golden Wave</div>
+      <h1>AI Opportunity Intake</h1>
+      <p class="lede">
+        Help us make your assessment useful from minute one. About 10 minutes.
+        Rough estimates are fine — there are no wrong answers.
+      </p>
+    </header>
+
+    <div class="card" id="form-card">
+      <div class="progress" aria-hidden="true">
+        <span class="on" data-p="0"></span>
+        <span data-p="1"></span>
+        <span data-p="2"></span>
+        <span data-p="3"></span>
+      </div>
+      <div class="step-label" id="step-label">Step 1 of 4 — You &amp; the business</div>
+
+      <form id="intake-form" novalidate>
+        <!-- STEP 1 -->
+        <section class="step active" data-step="0">
+          <p class="section-intro">Basics so we know who we’re speaking with.</p>
+
+          <div class="grid-2">
+            <div class="field" data-required>
+              <label for="full_name">Full name <span class="req">*</span></label>
+              <input id="full_name" name="full_name" type="text" autocomplete="name" required />
+              <div class="error">Please add your name.</div>
+            </div>
+            <div class="field" data-required>
+              <label for="email">Email <span class="req">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <div class="error">Need a valid email.</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="phone">Phone / WhatsApp</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field" data-required>
+              <label for="role">Your role <span class="req">*</span></label>
+              <input id="role" name="role" type="text" placeholder="e.g. Owner, Ops Manager, MD" required />
+              <div class="error">What should we call your role?</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field" data-required>
+              <label for="business_name">Business name <span class="req">*</span></label>
+              <input id="business_name" name="business_name" type="text" required />
+              <div class="error">Business name please.</div>
+            </div>
+            <div class="field">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="url" placeholder="https://" />
+            </div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="business_does">What does the business do? <span class="req">*</span></label>
+            <textarea id="business_does" name="business_does" required placeholder="1–2 sentences"></textarea>
+            <span class="hint">e.g. We install and service commercial HVAC systems across the South East.</span>
+            <div class="error">A short description helps a lot.</div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field" data-required>
+              <label for="industry">Industry / niche <span class="req">*</span></label>
+              <select id="industry" name="industry" required>
+                <option value="">Select…</option>
+                <option>Trades</option>
+                <option>Estate agency</option>
+                <option>Accountancy</option>
+                <option>Cleaning</option>
+                <option>Professional services</option>
+                <option>Agency / marketing</option>
+                <option>Retail</option>
+                <option>Hospitality</option>
+                <option>Healthcare / wellness</option>
+                <option>Other</option>
+              </select>
+              <div class="error">Pick the closest fit.</div>
+            </div>
+            <div class="field" data-required>
+              <label for="team_size">Team size (including you) <span class="req">*</span></label>
+              <select id="team_size" name="team_size" required>
+                <option value="">Select…</option>
+                <option>Just me</option>
+                <option>2–5</option>
+                <option>6–15</option>
+                <option>16–50</option>
+                <option>51+</option>
+              </select>
+              <div class="error">Rough size is fine.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="location">Where are you based? (city / region)</label>
+            <input id="location" name="location" type="text" />
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="step" data-step="1">
+          <p class="section-intro">Pick the priority that would make the biggest difference this quarter — then how work actually runs.</p>
+
+          <div class="field" data-required data-radio-group="priority">
+            <label>What matters most to you right now? <span class="req">*</span></label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="priority" value="More revenue" required /><span>More revenue</span></label>
+              <label class="choice"><input type="radio" name="priority" value="More hours back in my week" /><span>More hours back in my week</span></label>
+              <label class="choice"><input type="radio" name="priority" value="Happier customers / fewer complaints" /><span>Happier customers / fewer complaints</span></label>
+              <label class="choice"><input type="radio" name="priority" value="Scaling without hiring" /><span>Scaling without hiring</span></label>
+              <label class="choice"><input type="radio" name="priority" value="Reducing stress / chaos" /><span>Reducing stress / chaos</span></label>
+            </div>
+            <div class="error">Choose one priority.</div>
+          </div>
+
+          <div class="field">
+            <label for="priority_why">Why that one?</label>
+            <textarea id="priority_why" name="priority_why" placeholder="Optional — 1–3 sentences"></textarea>
+          </div>
+
+          <div class="field" data-required>
+            <label for="magic_wand">If you could only fix ONE thing in the next 90 days, what would it be? <span class="req">*</span></label>
+            <textarea id="magic_wand" name="magic_wand" required></textarea>
+            <div class="error">Your magic-wand answer is the headline of the assessment.</div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="typical_day">Walk us through a typical busy day <span class="req">*</span></label>
+            <textarea id="typical_day" name="typical_day" required placeholder="5–8 bullet points is perfect"></textarea>
+            <span class="hint">Doesn’t need to be perfect. Morning → midday → end of day is fine.</span>
+            <div class="error">Even a rough day outline helps.</div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="repeated_task">What’s your most repeated weekly task? <span class="req">*</span></label>
+            <textarea id="repeated_task" name="repeated_task" required></textarea>
+            <div class="error">What keeps coming back every week?</div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="repeated_hours">Roughly how many hours/week does that task take (you + team)? <span class="req">*</span></label>
+            <select id="repeated_hours" name="repeated_hours" required>
+              <option value="">Select…</option>
+              <option>&lt;2</option>
+              <option>2–5</option>
+              <option>6–10</option>
+              <option>11–20</option>
+              <option>20+</option>
+            </select>
+            <div class="error">Ballpark hours please.</div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="stall_points">Where do things tend to stall or slip through the cracks? <span class="req">*</span></label>
+            <textarea id="stall_points" name="stall_points" required></textarea>
+            <span class="hint">e.g. Quotes sit in drafts, leads go cold, invoices chase late, field handovers get messy.</span>
+            <div class="error">Where does work get stuck?</div>
+          </div>
+
+          <div class="field">
+            <label for="dread_tasks">What tasks do you personally dread?</label>
+            <textarea id="dread_tasks" name="dread_tasks"></textarea>
+          </div>
+
+          <div class="field" data-required data-checkbox-group="work_piles">
+            <label>Where does work pile up? <span class="req">*</span></label>
+            <div class="checks" id="work_piles">
+              <label class="check"><input type="checkbox" name="work_piles" value="Inbound enquiries" /><span>Inbound enquiries</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Quotes / proposals" /><span>Quotes / proposals</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Scheduling / diary" /><span>Scheduling / diary</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Job sheets / fieldwork updates" /><span>Job sheets / fieldwork updates</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Invoicing / chasing payment" /><span>Invoicing / chasing payment</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Customer follow-up" /><span>Customer follow-up</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Admin / paperwork" /><span>Admin / paperwork</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Reporting" /><span>Reporting</span></label>
+              <label class="check"><input type="checkbox" name="work_piles" value="Hiring / onboarding" /><span>Hiring / onboarding</span></label>
+              <label class="check has-other"><input type="checkbox" name="work_piles" value="Other" id="work_piles_other_cb" /><span>Other</span></label>
+            </div>
+            <input class="hidden" style="margin-top:0.55rem" id="work_piles_other" name="work_piles_other" type="text" placeholder="Other — tell us" />
+            <div class="error">Tick at least one.</div>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="step" data-step="2">
+          <p class="section-intro">These numbers stay confidential. Ballparks are enough — we use them to size opportunity, not judge the business.</p>
+
+          <div class="grid-2">
+            <div class="field" data-required>
+              <label for="reclaimable_hours">Hours/week on work that shouldn’t need you <span class="req">*</span></label>
+              <select id="reclaimable_hours" name="reclaimable_hours" required>
+                <option value="">Select…</option>
+                <option>&lt;5</option>
+                <option>5–10</option>
+                <option>11–20</option>
+                <option>21–30</option>
+                <option>30+</option>
+              </select>
+              <div class="error">Rough hours please.</div>
+            </div>
+            <div class="field" data-required>
+              <label for="hour_value">Value of one hour of your time <span class="req">*</span></label>
+              <select id="hour_value" name="hour_value" required>
+                <option value="">Select…</option>
+                <option>Prefer not to say</option>
+                <option>£25–50</option>
+                <option>£50–100</option>
+                <option>£100–200</option>
+                <option>£200+</option>
+              </select>
+              <div class="error">Ballpark is fine.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="money_leaks">Any obvious money leaks you already know about?</label>
+            <textarea id="money_leaks" name="money_leaks" placeholder="Missed leads, slow quotes, no-shows, late invoices, rework…"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="revenue_range">Approximate monthly revenue (optional, confidential)</label>
+            <select id="revenue_range" name="revenue_range">
+              <option value="">Prefer not to say</option>
+              <option>Under £10k</option>
+              <option>£10–25k</option>
+              <option>£25–50k</option>
+              <option>£50–100k</option>
+              <option>£100k+</option>
+            </select>
+          </div>
+
+          <div class="field" data-required data-checkbox-group="tools">
+            <label>What tools do you use day-to-day? <span class="req">*</span></label>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="tools" value="Email (Gmail/Outlook)" /><span>Email (Gmail/Outlook)</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="WhatsApp" /><span>WhatsApp</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Spreadsheets" /><span>Spreadsheets</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Xero / QuickBooks" /><span>Xero / QuickBooks</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="FreeAgent" /><span>FreeAgent</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="HubSpot / other CRM" /><span>HubSpot / other CRM</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Jobber / ServiceM8 / Tradify" /><span>Jobber / ServiceM8 / Tradify</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Calendly" /><span>Calendly</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Slack / Teams" /><span>Slack / Teams</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="WordPress / basic website" /><span>WordPress / basic website</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Social media schedulers" /><span>Social media schedulers</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="AI tools (ChatGPT etc.)" /><span>AI tools (ChatGPT etc.)</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Paper / notebooks" /><span>Paper / notebooks</span></label>
+              <label class="check has-other"><input type="checkbox" name="tools" value="Other" id="tools_other_cb" /><span>Other</span></label>
+            </div>
+            <input class="hidden" style="margin-top:0.55rem" id="tools_other" name="tools_other" type="text" placeholder="Other tools" />
+            <div class="error">Tick what you actually use.</div>
+          </div>
+
+          <div class="field">
+            <label for="clunky_tools">Which of those feel clunky or half-used?</label>
+            <textarea id="clunky_tools" name="clunky_tools"></textarea>
+          </div>
+
+          <div class="field" data-required data-radio-group="ai_exposure">
+            <label>Have you tried any AI tools already? <span class="req">*</span></label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="ai_exposure" value="Not really" required /><span>Not really</span></label>
+              <label class="choice"><input type="radio" name="ai_exposure" value="Dabbled (ChatGPT etc.)" /><span>Dabbled (ChatGPT etc.)</span></label>
+              <label class="choice"><input type="radio" name="ai_exposure" value="Using regularly" /><span>Using regularly</span></label>
+              <label class="choice"><input type="radio" name="ai_exposure" value="Built into workflows" /><span>Built into workflows</span></label>
+            </div>
+            <div class="error">Pick one.</div>
+          </div>
+
+          <div class="field hidden" id="ai_detail_field">
+            <label for="ai_detail">What worked / what didn’t?</label>
+            <textarea id="ai_detail" name="ai_detail"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="unused_paid_tools">Any tools you pay for but barely use?</label>
+            <input id="unused_paid_tools" name="unused_paid_tools" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="stakeholders">Who else would need to be happy for a change to stick?</label>
+            <input id="stakeholders" name="stakeholders" type="text" placeholder="Partner, office manager, accountant…" />
+          </div>
+
+          <div class="field" data-required>
+            <label for="call_attendees">Who will join the assessment call? <span class="req">*</span></label>
+            <input id="call_attendees" name="call_attendees" type="text" required />
+            <div class="error">Who’s on the call?</div>
+          </div>
+
+          <div class="field">
+            <label>How open is the team to trying new tools?</label>
+            <div class="scale">
+              <label><input type="radio" name="team_openness" value="1" /><span>1</span></label>
+              <label><input type="radio" name="team_openness" value="2" /><span>2</span></label>
+              <label><input type="radio" name="team_openness" value="3" /><span>3</span></label>
+              <label><input type="radio" name="team_openness" value="4" /><span>4</span></label>
+              <label><input type="radio" name="team_openness" value="5" /><span>5</span></label>
+            </div>
+            <div class="scale-caption"><span>1 — resistant</span><span>5 — eager</span></div>
+          </div>
+
+          <div class="field" data-checkbox-group="worries">
+            <label>Biggest worry about bringing AI / automation in?</label>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="worries" value="Cost" /><span>Cost</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="Time to set up" /><span>Time to set up</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="It won't work for our industry" /><span>It won’t work for our industry</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="Staff pushback" /><span>Staff pushback</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="Data / privacy" /><span>Data / privacy</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="Becoming dependent on tech" /><span>Becoming dependent on tech</span></label>
+              <label class="check"><input type="checkbox" name="worries" value="Don't know where to start" /><span>Don’t know where to start</span></label>
+              <label class="check has-other"><input type="checkbox" name="worries" value="Other" id="worries_other_cb" /><span>Other</span></label>
+            </div>
+            <input class="hidden" style="margin-top:0.55rem" id="worries_other" name="worries_other" type="text" placeholder="Other worry" />
+          </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="step" data-step="3">
+          <p class="section-intro">Last page — goals, constraints, and logistics for the call.</p>
+
+          <div class="field" data-required>
+            <label for="win_90_days">What does a “win” look like 90 days from now? <span class="req">*</span></label>
+            <textarea id="win_90_days" name="win_90_days" required></textarea>
+            <div class="error">Paint the win in plain language.</div>
+          </div>
+
+          <div class="field">
+            <label for="off_limits">Anything off-limits?</label>
+            <textarea id="off_limits" name="off_limits" placeholder="Tools, budget bands, processes you won’t touch…"></textarea>
+          </div>
+
+          <div class="field" data-radio-group="budget_posture">
+            <label>Preferred budget posture for improvements after the assessment</label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="budget_posture" value="Exploring only for now" /><span>Exploring only for now</span></label>
+              <label class="choice"><input type="radio" name="budget_posture" value="Under £500" /><span>Under £500</span></label>
+              <label class="choice"><input type="radio" name="budget_posture" value="£500–2k" /><span>£500–2k</span></label>
+              <label class="choice"><input type="radio" name="budget_posture" value="£2–5k" /><span>£2–5k</span></label>
+              <label class="choice"><input type="radio" name="budget_posture" value="£5k+ if ROI is clear" /><span>£5k+ if ROI is clear</span></label>
+              <label class="choice"><input type="radio" name="budget_posture" value="Prefer not to say" /><span>Prefer not to say</span></label>
+            </div>
+          </div>
+
+          <div class="field" data-required data-radio-group="timeline">
+            <label>How soon do you want to act if something clear shows up? <span class="req">*</span></label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="timeline" value="This month" required /><span>This month</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="This quarter" /><span>This quarter</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="Later this year" /><span>Later this year</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="Just researching" /><span>Just researching</span></label>
+            </div>
+            <div class="error">Pick a timing.</div>
+          </div>
+
+          <div class="field" data-required>
+            <label for="best_times">Best days/times for the call (include timezone) <span class="req">*</span></label>
+            <input id="best_times" name="best_times" type="text" required placeholder="e.g. Tue/Thu mornings, UK time" />
+            <div class="error">When should we speak?</div>
+          </div>
+
+          <div class="field">
+            <label for="anything_else">Anything else we should know before we speak?</label>
+            <textarea id="anything_else" name="anything_else"></textarea>
+          </div>
+
+          <div class="field" data-required data-radio-group="recording">
+            <label>Permission to record the call for notes / analysis only <span class="req">*</span></label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="recording" value="Yes" required /><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="recording" value="No — notes only" /><span>No — notes only</span></label>
+            </div>
+            <div class="error">Please choose one.</div>
+          </div>
+
+          <div class="field">
+            <label for="referral_source">How did you hear about us?</label>
+            <select id="referral_source" name="referral_source">
+              <option value="">Select…</option>
+              <option>Referral</option>
+              <option>LinkedIn</option>
+              <option>Meetup</option>
+              <option>Google</option>
+              <option>Existing contact</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <p class="section-intro" style="margin-top:1.25rem">
+            Thanks — this gives us a proper head start. We’ll come to the call with specific questions about your bottlenecks, not a generic pitch.
+          </p>
+        </section>
+
+        <div class="actions">
+          <button type="button" class="btn-secondary" id="back-btn" hidden>Back</button>
+          <div style="flex:1"></div>
+          <button type="button" class="btn-primary" id="next-btn">Continue</button>
+          <button type="submit" class="btn-primary hidden" id="submit-btn">Send my intake</button>
+        </div>
+      </form>
+
+      <div class="success" id="success">
+        <div class="check-badge" aria-hidden="true">✓</div>
+        <h2>Got it — thank you</h2>
+        <p>
+          Your intake is in. We’ll review it before the call and come prepared.
+          A copy of your answers has been downloaded for your records.
+        </p>
+        <div class="success-actions">
+          <button type="button" class="btn-secondary" id="copy-btn">Copy answers</button>
+          <button type="button" class="btn-primary" id="download-btn">Download again</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot">Golden Wave · Confidential · Takes ~10 minutes</p>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="./config.js"></script>
+  <script>
+    const CONFIG = Object.assign({
+      // Open-source push notifications (https://ntfy.sh) — subscribe on phone/desktop
+      ntfyTopic: "gw-intake-058b292d",
+      ntfyServer: "https://ntfy.sh",
+      // Optional: FormSubmit email delivery (confirm once on first real submit)
+      notifyEmail: "",
+      brandName: "Golden Wave"
+    }, window.INTAKE_CONFIG || {});
+
+    const steps = [...document.querySelectorAll(".step")];
+    const progress = [...document.querySelectorAll(".progress span")];
+    const stepLabel = document.getElementById("step-label");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const form = document.getElementById("intake-form");
+    const success = document.getElementById("success");
+    const labels = [
+      "Step 1 of 4 — You & the business",
+      "Step 2 of 4 — Priorities & day-to-day",
+      "Step 3 of 4 — Time, tools & people",
+      "Step 4 of 4 — Goals & logistics"
+    ];
+
+    let current = 0;
+    let lastPayload = null;
+
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      setTimeout(() => el.classList.remove("show"), 2200);
+    }
+
+    function setStep(i) {
+      current = i;
+      steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
+      progress.forEach((p, idx) => {
+        p.classList.toggle("on", idx <= i);
+        p.classList.toggle("partial", false);
+      });
+      stepLabel.textContent = labels[i];
+      backBtn.hidden = i === 0;
+      nextBtn.classList.toggle("hidden", i === steps.length - 1);
+      submitBtn.classList.toggle("hidden", i !== steps.length - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function validateStep(i) {
+      const step = steps[i];
+      let ok = true;
+      step.querySelectorAll(".field").forEach((field) => field.classList.remove("invalid"));
+
+      step.querySelectorAll(".field[data-required]").forEach((field) => {
+        const radioGroup = field.dataset.radioGroup;
+        const checkboxGroup = field.dataset.checkboxGroup;
+        let valid = true;
+
+        if (radioGroup) {
+          valid = !!form.querySelector(`input[name="${radioGroup}"]:checked`);
+        } else if (checkboxGroup) {
+          valid = form.querySelectorAll(`input[name="${checkboxGroup}"]:checked`).length > 0;
+        } else {
+          const input = field.querySelector("input, select, textarea");
+          if (!input) return;
+          if (input.type === "email") {
+            valid = input.value.trim() !== "" && input.checkValidity();
+          } else {
+            valid = input.value.trim() !== "";
+          }
+        }
+
+        if (!valid) {
+          field.classList.add("invalid");
+          ok = false;
+        }
+      });
+
+      return ok;
+    }
+
+    function wireOther(cbId, inputId) {
+      const cb = document.getElementById(cbId);
+      const input = document.getElementById(inputId);
+      if (!cb || !input) return;
+      const sync = () => {
+        input.classList.toggle("hidden", !cb.checked);
+        if (!cb.checked) input.value = "";
+      };
+      cb.addEventListener("change", sync);
+      sync();
+    }
+
+    wireOther("work_piles_other_cb", "work_piles_other");
+    wireOther("tools_other_cb", "tools_other");
+    wireOther("worries_other_cb", "worries_other");
+
+    form.querySelectorAll('input[name="ai_exposure"]').forEach((el) => {
+      el.addEventListener("change", () => {
+        const show = el.checked && el.value !== "Not really";
+        // if any selected that isn't Not really
+        const selected = form.querySelector('input[name="ai_exposure"]:checked');
+        const should = selected && selected.value !== "Not really";
+        document.getElementById("ai_detail_field").classList.toggle("hidden", !should);
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (!validateStep(current)) {
+        showToast("A few required fields still need answers");
+        const firstInvalid = steps[current].querySelector(".field.invalid");
+        firstInvalid?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      setStep(Math.min(current + 1, steps.length - 1));
+    });
+
+    backBtn.addEventListener("click", () => setStep(Math.max(current - 1, 0)));
+
+    function getChecked(name) {
+      return [...form.querySelectorAll(`input[name="${name}"]:checked`)].map((el) => el.value);
+    }
+
+    function val(name) {
+      const el = form.elements.namedItem(name);
+      if (!el) return "";
+      if (el instanceof RadioNodeList) {
+        const checked = [...el].find((x) => x.checked);
+        return checked ? checked.value : "";
+      }
+      return (el.value || "").trim();
+    }
+
+    function collect() {
+      const work = getChecked("work_piles");
+      if (work.includes("Other") && val("work_piles_other")) {
+        work[work.indexOf("Other")] = `Other: ${val("work_piles_other")}`;
+      }
+      const tools = getChecked("tools");
+      if (tools.includes("Other") && val("tools_other")) {
+        tools[tools.indexOf("Other")] = `Other: ${val("tools_other")}`;
+      }
+      const worries = getChecked("worries");
+      if (worries.includes("Other") && val("worries_other")) {
+        worries[worries.indexOf("Other")] = `Other: ${val("worries_other")}`;
+      }
+
+      return {
+        submitted_at: new Date().toISOString(),
+        full_name: val("full_name"),
+        email: val("email"),
+        phone: val("phone"),
+        role: val("role"),
+        business_name: val("business_name"),
+        website: val("website"),
+        business_does: val("business_does"),
+        industry: val("industry"),
+        team_size: val("team_size"),
+        location: val("location"),
+        priority: val("priority"),
+        priority_why: val("priority_why"),
+        magic_wand: val("magic_wand"),
+        typical_day: val("typical_day"),
+        repeated_task: val("repeated_task"),
+        repeated_hours: val("repeated_hours"),
+        stall_points: val("stall_points"),
+        dread_tasks: val("dread_tasks"),
+        work_piles: work,
+        reclaimable_hours: val("reclaimable_hours"),
+        hour_value: val("hour_value"),
+        money_leaks: val("money_leaks"),
+        revenue_range: val("revenue_range") || "Prefer not to say",
+        tools,
+        clunky_tools: val("clunky_tools"),
+        ai_exposure: val("ai_exposure"),
+        ai_detail: val("ai_detail"),
+        unused_paid_tools: val("unused_paid_tools"),
+        stakeholders: val("stakeholders"),
+        call_attendees: val("call_attendees"),
+        team_openness: val("team_openness"),
+        worries,
+        win_90_days: val("win_90_days"),
+        off_limits: val("off_limits"),
+        budget_posture: val("budget_posture"),
+        timeline: val("timeline"),
+        best_times: val("best_times"),
+        anything_else: val("anything_else"),
+        recording: val("recording"),
+        referral_source: val("referral_source")
+      };
+    }
+
+    function toMarkdown(data) {
+      const list = (arr) => (arr && arr.length ? arr.map((x) => `- ${x}`).join("\n") : "- (none)");
+      return `# AI Opportunity Intake — ${data.business_name}
+
+Submitted: ${data.submitted_at}
+
+## 1. You & business
+- **Name:** ${data.full_name}
+- **Email:** ${data.email}
+- **Phone:** ${data.phone || "—"}
+- **Role:** ${data.role}
+- **Business:** ${data.business_name}
+- **Website:** ${data.website || "—"}
+- **What they do:** ${data.business_does}
+- **Industry:** ${data.industry}
+- **Team size:** ${data.team_size}
+- **Location:** ${data.location || "—"}
+
+## 2. Priorities & day-to-day
+- **Priority fork:** ${data.priority}
+- **Why:** ${data.priority_why || "—"}
+- **Magic wand (90 days):** ${data.magic_wand}
+- **Typical busy day:**
+${data.typical_day}
+- **Most repeated weekly task:** ${data.repeated_task}
+- **Hours/week on that task:** ${data.repeated_hours}
+- **Where things stall:** ${data.stall_points}
+- **Dread tasks:** ${data.dread_tasks || "—"}
+- **Work piles up:**
+${list(data.work_piles)}
+
+## 3. Time, tools & people
+- **Reclaimable owner hours/week:** ${data.reclaimable_hours}
+- **Hour value:** ${data.hour_value}
+- **Money leaks:** ${data.money_leaks || "—"}
+- **Monthly revenue range:** ${data.revenue_range}
+- **Tools:**
+${list(data.tools)}
+- **Clunky / half-used:** ${data.clunky_tools || "—"}
+- **AI exposure:** ${data.ai_exposure}
+- **AI detail:** ${data.ai_detail || "—"}
+- **Paid but unused:** ${data.unused_paid_tools || "—"}
+- **Stakeholders:** ${data.stakeholders || "—"}
+- **Call attendees:** ${data.call_attendees}
+- **Team openness (1–5):** ${data.team_openness || "—"}
+- **Worries:**
+${list(data.worries)}
+
+## 4. Goals & logistics
+- **90-day win:** ${data.win_90_days}
+- **Off-limits:** ${data.off_limits || "—"}
+- **Budget posture:** ${data.budget_posture || "—"}
+- **Timeline:** ${data.timeline}
+- **Best call times:** ${data.best_times}
+- **Anything else:** ${data.anything_else || "—"}
+- **Recording permission:** ${data.recording}
+- **Source:** ${data.referral_source || "—"}
+`;
+    }
+
+    function downloadText(filename, text) {
+      const blob = new Blob([text], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function notifyNtfy(data, markdown) {
+      if (!CONFIG.ntfyTopic) return { ok: false, reason: "no-topic" };
+      const title = `Intake: ${data.business_name} — ${data.full_name}`;
+      const summary = [
+        `${data.business_name} (${data.industry}, ${data.team_size})`,
+        `Priority: ${data.priority}`,
+        `Magic wand: ${data.magic_wand.slice(0, 180)}`,
+        `Timeline: ${data.timeline} · Call: ${data.best_times}`,
+        `Contact: ${data.full_name} <${data.email}>`
+      ].join("\n");
+
+      // Short alert
+      await fetch(`${CONFIG.ntfyServer.replace(/\/$/, "")}/${CONFIG.ntfyTopic}`, {
+        method: "POST",
+        headers: {
+          Title: title,
+          Priority: "default",
+          Tags: "clipboard,golden-wave",
+          Filename: "intake-summary.txt"
+        },
+        body: summary
+      });
+
+      // Full markdown as attachment-style body (second message)
+      await fetch(`${CONFIG.ntfyServer.replace(/\/$/, "")}/${CONFIG.ntfyTopic}`, {
+        method: "POST",
+        headers: {
+          Title: `${data.business_name} — full intake`,
+          Filename: `${slug(data.business_name)}-intake.md`,
+          Tags: "page_facing_up"
+        },
+        body: markdown
+      });
+
+      return { ok: true };
+    }
+
+    async function notifyEmail(data, markdown) {
+      if (!CONFIG.notifyEmail) return { ok: false, reason: "no-email" };
+      const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(CONFIG.notifyEmail)}`;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _subject: `[${CONFIG.brandName}] Intake — ${data.business_name}`,
+          _template: "box",
+          name: data.full_name,
+          email: data.email,
+          message: markdown,
+          ...data,
+          work_piles: data.work_piles.join(", "),
+          tools: data.tools.join(", "),
+          worries: data.worries.join(", ")
+        })
+      });
+      return { ok: res.ok };
+    }
+
+    function slug(s) {
+      return String(s || "client")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "")
+        .slice(0, 48) || "client";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!validateStep(current)) {
+        showToast("A few required fields still need answers");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      const data = collect();
+      const markdown = toMarkdown(data);
+      lastPayload = { data, markdown };
+
+      // Always give the respondent a local copy
+      downloadText(`${slug(data.business_name)}-intake.md`, markdown);
+
+      // Persist locally for Ryan if he opens the form admin-side later
+      try {
+        const key = "gw_intake_submissions";
+        const prev = JSON.parse(localStorage.getItem(key) || "[]");
+        prev.unshift(data);
+        localStorage.setItem(key, JSON.stringify(prev.slice(0, 50)));
+      } catch (_) {}
+
+      let delivered = false;
+      try {
+        const n = await notifyNtfy(data, markdown);
+        if (n.ok) delivered = true;
+      } catch (err) {
+        console.warn("ntfy failed", err);
+      }
+
+      try {
+        const m = await notifyEmail(data, markdown);
+        if (m.ok) delivered = true;
+      } catch (err) {
+        console.warn("email failed", err);
+      }
+
+      form.classList.add("hidden");
+      document.querySelector(".progress").classList.add("hidden");
+      stepLabel.classList.add("hidden");
+      success.classList.add("show");
+
+      if (!delivered) {
+        showToast("Saved locally — set notify email in config for inbox delivery");
+      } else {
+        showToast("Intake sent");
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send my intake";
+    });
+
+    document.getElementById("copy-btn").addEventListener("click", async () => {
+      if (!lastPayload) return;
+      await navigator.clipboard.writeText(lastPayload.markdown);
+      showToast("Copied");
+    });
+
+    document.getElementById("download-btn").addEventListener("click", () => {
+      if (!lastPayload) return;
+      downloadText(`${slug(lastPayload.data.business_name)}-intake.md`, lastPayload.markdown);
+    });
+
+    setStep(0);
+  </script>
+</body>
+</html>
