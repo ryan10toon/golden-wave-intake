@@ -849,7 +849,7 @@
         <div class="check-badge" aria-hidden="true">✓</div>
         <h2>Got it — thank you</h2>
         <p>
-          Your intake is in. We’ll review it before the call and come prepared.
+          Your intake is in our system. We’ll review it before the call and come prepared.
           A copy of your answers has been downloaded for your records.
         </p>
         <div class="success-actions">
@@ -867,10 +867,9 @@
   <script src="./config.js"></script>
   <script>
     const CONFIG = Object.assign({
-      // Open-source push notifications (https://ntfy.sh) — subscribe on phone/desktop
+      apiBaseUrl: "",
       ntfyTopic: "gw-intake-058b292d",
       ntfyServer: "https://ntfy.sh",
-      // Optional: FormSubmit email delivery (confirm once on first real submit)
       notifyEmail: "",
       brandName: "Golden Wave"
     }, window.INTAKE_CONFIG || {});
@@ -1128,6 +1127,18 @@ ${list(data.worries)}
       URL.revokeObjectURL(url);
     }
 
+    async function saveToDatabase(data) {
+      if (!CONFIG.apiBaseUrl) return { ok: false, reason: "no-api" };
+      const res = await fetch(`${CONFIG.apiBaseUrl.replace(/\/$/, "")}/api/intakes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error || `API ${res.status}`);
+      return { ok: true, ...json };
+    }
+
     async function notifyNtfy(data, markdown) {
       if (!CONFIG.ntfyTopic) return { ok: false, reason: "no-topic" };
       const title = `Intake: ${data.business_name} — ${data.full_name}`;
@@ -1223,6 +1234,15 @@ ${list(data.worries)}
       } catch (_) {}
 
       let delivered = false;
+      let dbOk = false;
+      try {
+        const saved = await saveToDatabase(data);
+        if (saved.ok) { delivered = true; dbOk = true; }
+      } catch (err) {
+        console.warn("database save failed", err);
+        showToast("Database save failed — kept local copy");
+      }
+
       try {
         const n = await notifyNtfy(data, markdown);
         if (n.ok) delivered = true;
@@ -1242,10 +1262,12 @@ ${list(data.worries)}
       stepLabel.classList.add("hidden");
       success.classList.add("show");
 
-      if (!delivered) {
-        showToast("Saved locally — set notify email in config for inbox delivery");
+      if (dbOk) {
+        showToast("Saved to Golden Wave database");
+      } else if (delivered) {
+        showToast("Intake sent (notify only — DB offline)");
       } else {
-        showToast("Intake sent");
+        showToast("Saved locally — database unreachable");
       }
 
       submitBtn.disabled = false;

@@ -1,16 +1,15 @@
 // Golden Wave intake form config
-// Edit and redeploy (or override before first client).
+// Edit and redeploy public pages after changing apiBaseUrl.
 window.INTAKE_CONFIG = {
   brandName: "Golden Wave",
 
+  // Intake API (SQLite). Set to the public tunnel/host URL (no trailing slash).
+  apiBaseUrl: "https://looks-swim-configure-lake.trycloudflare.com",
+
   // Open-source notifications: https://ntfy.sh
-  // Subscribe on phone: ntfy app → subscribe to this topic
-  // Or open: https://ntfy.sh/gw-intake-058b292d
   ntfyServer: "https://ntfy.sh",
   ntfyTopic: "gw-intake-058b292d",
 
-  // Optional inbox delivery via FormSubmit (open redirect service).
-  // First real submission sends a confirmation email — click it once.
-  // Example: "you@goldenwave.example"
+  // Optional inbox delivery via FormSubmit.
   notifyEmail: ""
 };
