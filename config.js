@@ -1,7 +1,7 @@
-// Golden Wave intake form config
+// Streamline Strategy intake form config
 // Edit and redeploy public pages after changing apiBaseUrl.
 window.INTAKE_CONFIG = {
-  brandName: "Golden Wave",
+  brandName: "Streamline Strategy",
 
   // Intake API (SQLite). Set to the public tunnel/host URL (no trailing slash).
   apiBaseUrl: "https://looks-swim-configure-lake.trycloudflare.com",

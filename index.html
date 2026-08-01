@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Opportunity Intake — Golden Wave</title>
-  <meta name="description" content="Short pre-call intake so your Golden Wave assessment starts useful from minute one." />
+  <title>Operations Intake — Streamline Strategy</title>
+  <meta name="description" content="A short pre-call intake so your Streamline Strategy assessment starts useful from minute one." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b1210;
-      --bg-elev: #121c18;
-      --bg-card: #16231e;
+      --bg: #0B2B26;
+      --bg-elev: #0F312B;
+      --bg-card: #103A33;
       --line: rgba(232, 220, 186, 0.14);
-      --text: #f3efe4;
-      --muted: #a8b3ab;
-      --gold: #d4b56a;
-      --gold-soft: rgba(212, 181, 106, 0.16);
-      --teal: #3d9b84;
-      --teal-deep: #1f6b5a;
-      --danger: #e07a6a;
-      --ok: #6fcf97;
+      --text: #F2EEE4;
+      --muted: #B0AB9E;
+      --gold: #C28F1A;
+      --gold-soft: rgba(194, 143, 26, 0.16);
+      --gold-deep: #A8780F;
+      --teal: #3D9B84;
+      --teal-deep: #1F6B5A;
+      --danger: #E07A6A;
+      --ok: #6FCF97;
       --radius: 16px;
       --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
       --max: 720px;
@@ -37,7 +38,7 @@
       color: var(--text);
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(61, 155, 132, 0.18), transparent 55%),
-        radial-gradient(900px 500px at 100% 0%, rgba(212, 181, 106, 0.12), transparent 50%),
+        radial-gradient(900px 500px at 100% 0%, rgba(194, 143, 26, 0.14), transparent 50%),
         var(--bg);
       line-height: 1.5;
     }
@@ -71,7 +72,7 @@
       border-radius: 999px;
       background:
         conic-gradient(from 210deg, var(--teal), var(--gold), var(--teal-deep), var(--teal));
-      box-shadow: 0 0 0 3px rgba(212, 181, 106, 0.15);
+      box-shadow: 0 0 0 3px rgba(194, 143, 26, 0.18);
     }
 
     h1 {
@@ -205,8 +206,8 @@
     select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 2.2rem; }
 
     input:focus, select:focus, textarea:focus {
-      border-color: rgba(61, 155, 132, 0.7);
-      box-shadow: 0 0 0 3px rgba(61, 155, 132, 0.18);
+      border-color: rgba(194, 143, 26, 0.7);
+      box-shadow: 0 0 0 3px rgba(194, 143, 26, 0.2);
     }
 
     .grid-2 {
@@ -245,11 +246,11 @@
     }
 
     .choice input:focus-visible + span {
-      box-shadow: 0 0 0 3px rgba(61, 155, 132, 0.18);
+      box-shadow: 0 0 0 3px rgba(194, 143, 26, 0.2);
     }
 
     .choice input:checked + span {
-      border-color: rgba(212, 181, 106, 0.65);
+      border-color: rgba(194, 143, 26, 0.65);
       background: var(--gold-soft);
     }
 
@@ -272,7 +273,7 @@
     }
 
     .check:hover { border-color: rgba(255,255,255,0.22); }
-    .check input { margin-top: 0.2rem; accent-color: var(--teal); width: 1rem; height: 1rem; }
+    .check input { margin-top: 0.2rem; accent-color: var(--gold); width: 1rem; height: 1rem; }
     .check.has-other { align-items: center; }
 
     .scale {
@@ -298,7 +299,7 @@
 
     .scale input { position: absolute; opacity: 0; pointer-events: none; }
     .scale input:checked + span {
-      border-color: rgba(212, 181, 106, 0.65);
+      border-color: rgba(194, 143, 26, 0.65);
       background: var(--gold-soft);
       color: var(--gold);
     }
@@ -340,9 +341,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--teal), var(--teal-deep));
-      color: white;
-      box-shadow: 0 10px 24px rgba(31, 107, 90, 0.35);
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      color: var(--bg);
+      box-shadow: 0 10px 24px rgba(194, 143, 26, 0.35);
       min-width: 9rem;
     }
 
@@ -421,7 +422,7 @@
       left: 50%;
       bottom: 1.25rem;
       transform: translateX(-50%) translateY(120%);
-      background: #1c2a24;
+      background: #103A33;
       border: 1px solid var(--line);
       color: var(--text);
       padding: 0.75rem 1rem;
@@ -438,11 +439,10 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Golden Wave</div>
-      <h1>AI Opportunity Intake</h1>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Streamline Strategy</div>
+      <h1>Operations Intake</h1>
       <p class="lede">
-        Help us make your assessment useful from minute one. About 10 minutes.
-        Rough estimates are fine — there are no wrong answers.
+        A short intake before we assess how your operation actually runs — so the assessment starts useful from minute one. About 10 minutes. Rough estimates are fine.
       </p>
     </header>
 
@@ -688,7 +688,7 @@
               <label class="check"><input type="checkbox" name="tools" value="Slack / Teams" /><span>Slack / Teams</span></label>
               <label class="check"><input type="checkbox" name="tools" value="WordPress / basic website" /><span>WordPress / basic website</span></label>
               <label class="check"><input type="checkbox" name="tools" value="Social media schedulers" /><span>Social media schedulers</span></label>
-              <label class="check"><input type="checkbox" name="tools" value="AI tools (ChatGPT etc.)" /><span>AI tools (ChatGPT etc.)</span></label>
+              <label class="check"><input type="checkbox" name="tools" value="Automation tools (ChatGPT etc.)" /><span>Automation tools (ChatGPT etc.)</span></label>
               <label class="check"><input type="checkbox" name="tools" value="Paper / notebooks" /><span>Paper / notebooks</span></label>
               <label class="check has-other"><input type="checkbox" name="tools" value="Other" id="tools_other_cb" /><span>Other</span></label>
             </div>
@@ -702,7 +702,7 @@
           </div>
 
           <div class="field" data-required data-radio-group="ai_exposure">
-            <label>Have you tried any AI tools already? <span class="req">*</span></label>
+            <label>Have you tried any automation tools already? <span class="req">*</span></label>
             <div class="choices">
               <label class="choice"><input type="radio" name="ai_exposure" value="Not really" required /><span>Not really</span></label>
               <label class="choice"><input type="radio" name="ai_exposure" value="Dabbled (ChatGPT etc.)" /><span>Dabbled (ChatGPT etc.)</span></label>
@@ -746,7 +746,7 @@
           </div>
 
           <div class="field" data-checkbox-group="worries">
-            <label>Biggest worry about bringing AI / automation in?</label>
+            <label>Biggest worry about bringing automation in?</label>
             <div class="checks">
               <label class="check"><input type="checkbox" name="worries" value="Cost" /><span>Cost</span></label>
               <label class="check"><input type="checkbox" name="worries" value="Time to set up" /><span>Time to set up</span></label>
@@ -859,7 +859,7 @@
       </div>
     </div>
 
-    <p class="foot">Golden Wave · Confidential · Takes ~10 minutes</p>
+    <p class="foot">Streamline Strategy · Confidential · ~10 minutes</p>
   </div>
 
   <div class="toast" id="toast" role="status"></div>
@@ -871,7 +871,7 @@
       ntfyTopic: "gw-intake-058b292d",
       ntfyServer: "https://ntfy.sh",
       notifyEmail: "",
-      brandName: "Golden Wave"
+      brandName: "Streamline Strategy"
     }, window.INTAKE_CONFIG || {});
 
     const steps = [...document.querySelectorAll(".step")];
@@ -1059,7 +1059,7 @@
 
     function toMarkdown(data) {
       const list = (arr) => (arr && arr.length ? arr.map((x) => `- ${x}`).join("\n") : "- (none)");
-      return `# AI Opportunity Intake — ${data.business_name}
+      return `# Operations Intake — ${data.business_name}
 
 Submitted: ${data.submitted_at}
 
@@ -1096,8 +1096,8 @@ ${list(data.work_piles)}
 - **Tools:**
 ${list(data.tools)}
 - **Clunky / half-used:** ${data.clunky_tools || "—"}
-- **AI exposure:** ${data.ai_exposure}
-- **AI detail:** ${data.ai_detail || "—"}
+- **Automation exposure:** ${data.ai_exposure}
+- **Automation detail:** ${data.ai_detail || "—"}
 - **Paid but unused:** ${data.unused_paid_tools || "—"}
 - **Stakeholders:** ${data.stakeholders || "—"}
 - **Call attendees:** ${data.call_attendees}
@@ -1156,7 +1156,7 @@ ${list(data.worries)}
         headers: {
           Title: title,
           Priority: "default",
-          Tags: "clipboard,golden-wave",
+          Tags: "clipboard,streamline-strategy",
           Filename: "intake-summary.txt"
         },
         body: summary
@@ -1263,7 +1263,7 @@ ${list(data.worries)}
       success.classList.add("show");
 
       if (dbOk) {
-        showToast("Saved to Golden Wave database");
+        showToast("Saved to Streamline Strategy database");
       } else if (delivered) {
         showToast("Intake sent (notify only — DB offline)");
       } else {
